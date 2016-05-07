@@ -38,6 +38,6 @@ this is not exhaustive, but possible examples for our mockup:
 	fiance			betrothed
 	waiter			server
 	waitress		server
-	he			"please confirm the pronouns of the 					person you're referring to."
-	she			"please confirm the pronouns of the 					person you're referring to."
+	he			"please confirm the pronouns of the person you're referring to."
+	she			"please confirm the pronouns of the person you're referring to."
 	he or she		they, them, their
