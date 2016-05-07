@@ -1,0 +1,20 @@
+html, body {
+  padding:10px 20px 20px 10px;
+  width:600px;
+}
+
+h1 {
+  color: #0000cc
+}
+
+#content, #title{
+  background-color: #FFF;
+  width: 570px;
+}
+
+#redList, #suggestList{
+	float:left;
+	width:285px;
+	margin-bottom:25px;	
+}
+

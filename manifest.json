@@ -2,12 +2,13 @@
   "manifest_version": 2,
   "name": "asterisk",
   "description": "This extension checks and highlights the user's language as they type and suggests more gender neutral alternatives. Made for the Social Good track at HackDavis.",
-  "author":" Stephanie Chang, Yasmine Mortazavi",
+  "author":"Stephanie Chang, Yasmine Mortazavi",
   "version": "1.0",
 
   "browser_action": {
     "default_icon": "img/asterisk-1.png",
-    "default_popup": "popup.html"
+    "default_popup": "test.html",
+    "default_title": "Asterisk*"
   },
 
   "permissions": [
