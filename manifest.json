@@ -11,6 +11,14 @@
     "default_title": "Asterisk*"
   },
 
+  "content_scripts":[
+    {
+      "matches": ["*://*/*"],
+      "js": ["test.js"],
+      "run_at": "document_end"
+    }
+  ],
+
   "permissions": [
     "storage",
     "https://ajax.googleapis.com/"

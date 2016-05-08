@@ -1,23 +1,32 @@
 //referenced logic from open source tumblr savior
 
 var defaultLists = {
-    'redList': ['policeman', 'brother', 'actress'],
-    'suggestList': ['police officer', 'sibling', 'actor']
+    'redList': ['policeman', 'brother', 'actress', 'mrs.'],
+    'suggestList': ['police officer', 'sibling', 'actor', 'mx.']
 };
 //initialize defaultLists
-
+console.log(defaultLists);
 //counter for each list
 var inputCount = 0;
-
+var getDone = 0;
 loadDictAndSettings();
 
 //localStorage not working :(
 //using defaults for now
+chrome.storage.sync.set({'value': 'hello'}, function() {
+          // Notify that we saved.
+    console.log('Settings saved');
+});
+
 function initialCheck() {
-    var userLists;
+    var userLists = defaultLists; //{
+    	//'redList': [],
+    	//'suggestList': []
+    //}
 
     chrome.storage.local.get(null, function(resultIf){
-    	if (resultIf !== null){
+    	getDone = 0;
+    	if (resultIf == null){
     		userLists = defaultLists;
         	chrome.storage.local.set({'redList': userLists['redList']}) 
         	chrome.storage.local.set({'suggestList': userLists['suggestList']}) 	
@@ -26,7 +35,11 @@ function initialCheck() {
     	else {
 	  		chrome.storage.local.get('redList', function(resultR){
 	  			if(resultR){
-	  				userLists['redList'] = resultR;
+	  				console.log("wow");
+	  				userLists['redList'] = resultR['redList'];
+	  				console.log(userLists);
+	  				var rLength = userLists['redList'].length;
+	  				console.log(rLength);
 	  			}
 	  			else{
 	  				alert('Your Asterisk is corrupted. Loading defaults.');
@@ -37,7 +50,7 @@ function initialCheck() {
 	  		});
 	   		chrome.storage.local.get('suggestList', function(resultS){
 	   			if(resultS){
-	   				userLists['suggestList'] = resultS;
+	   				userLists['suggestList'] = resultS['suggestList'];
 	   			}
 
 	  			else{
@@ -48,12 +61,15 @@ function initialCheck() {
 	  			}
  	   		});
     	}
+    	getDone = 1;
     });
+    console.log("End of Initial Check");
+    console.log(userLists);
     return userLists;
 }//parseLists
 
 function loadDictAndSettings(){
-	var userLists = defaultLists;
+	var userLists = initialCheck();
 	var rLength = userLists['redList'].length;
 	var sLength = userLists['suggestList'].length;
 
@@ -139,4 +155,49 @@ function addInput (someList, elemVal){
     addList.insertBefore(addDiv, addElem);
 }//add Input
 
+//walk(document.body);
 
+function walk(node) 
+{
+	// I stole this function from cloud to butt
+	//who stole it from here:
+	// http://is.gd/mwZp7E
+	
+	var child, next;
+	
+	if (node.tagName.toLowerCase() == 'input' || node.tagName.toLowerCase() == 'textarea'
+	    || node.classList.indexOf('ace_editor') > -1) {
+		return;
+	}
+
+	switch ( node.nodeType )  
+	{
+		case 1:  // Element
+		case 9:  // Document
+		case 11: // Document fragment
+			child = node.firstChild;
+			while ( child ) 
+			{
+				next = child.nextSibling;
+				walk(child);
+				child = next;
+			}
+			break;
+
+		case 3: // Text node
+			handleText(node);
+			break;
+	}
+}
+
+
+function handleText(textNode) {
+	var v = textNode.nodeValue;
+	console.log(v)
+	for (item in v) {
+		var temp = v;
+		temp = temp.toLowerCase();
+		//if ()
+	}
+	textNode.nodeValue = v;
+}
