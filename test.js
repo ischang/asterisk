@@ -1,7 +1,7 @@
 //referenced logic from open source tumblr savior
 
 var defaultLists = {
-    'redList': ['niece', 'policeman', 'brother', 'actress', 'mrs.', 'stewardress', 'bitch', 'she', 'boyfriend', 'wife'],
+    'redList': ['niece', 'policeman', 'brother', 'actress', 'mrs.', 'stewardess', 'bitch', 'she', 'boyfriend', 'wife'],
     'suggestList': ['nibling', 'police officer', 'sibling', 'actor', 'mx.', 'flight attendant', 'this is a gendered slur', 'is this the right pronoun', 'partner', 'spouse']
 };
 //initialize defaultLists

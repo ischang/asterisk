@@ -3,7 +3,7 @@ var asterisk = {
     'mrs.': 'mx.',
     'brother': 'sibling',
     'she' : 'Is this the right pronoun?',
-    'stewardress': 'flight attendant',
+    'stewardess': 'flight attendant',
     'guys': 'you all',
     'the disabled': 'user person first language',
     'bitch': 'this is a gendered slur',
