@@ -1,13 +1,18 @@
 //referenced logic from open source tumblr savior
 
 var defaultLists = {
-    'redList': ['policeman', 'brother', 'actress', 'mrs.'],
-    'suggestList': ['police officer', 'sibling', 'actor', 'mx.']
+    'redList': ['niece', 'policeman', 'brother', 'actress', 'mrs.', 'stewardress', 'bitch', 'she', 'boyfriend', 'wife'],
+    'suggestList': ['nibling', 'police officer', 'sibling', 'actor', 'mx.', 'flight attendant', 'this is a gendered slur', 'is this the right pronoun', 'partner', 'spouse']
 };
 //initialize defaultLists
 //counter for each list
 var inputCount = 0;
-var getDone = 0;
+
+//to do!!!! to fix post hackathon
+//save user settings in chrome storage local
+//and be able to iterate through those in asterisk object
+//also fix to see if asterisk object can be put into script.js
+//fix how words highlight and hover in text on any webpage without messing with divs and html
 
 initialCheck();
 
@@ -21,16 +26,17 @@ function initialCheck() {
         	chrome.storage.local.set({'redList': userLists['redList']}) 
         	chrome.storage.local.set({'suggestList': userLists['suggestList']})
         	loadDictAndSettings(userLists);
-        	walk(document.body);
     	}//if
 
     	else {
-    		userLists = resultIf;
+    		//userLists = resultIf;
+    		//using defaultLists for temporary mockup for now
+    		userLists = defaultLists;
     		loadDictAndSettings(userLists);
-    		walk(document.body);
+    		console.log("??");
     	}//else
     });
-}//parseLists
+}//initialCheck
 asterisk = {}
 
 function loadDictAndSettings(userLists){

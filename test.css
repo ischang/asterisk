@@ -1,18 +1,11 @@
-html, body {
-  padding:10px 20px 20px 10px;
-  width:600px;
-}
-
-.squiggle {
-  display: inline-block;
-  position: relative;
-  color: #0000cc;
-}
-
 h1 {
   color: #0000cc
 }
 
+#testing{
+	width: 600px;
+	color: red;
+}
 #content, #title{
   background-color: #FFF;
   width: 570px;
