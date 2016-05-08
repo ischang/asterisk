@@ -14,7 +14,7 @@
   "content_scripts":[
     {
       "matches": ["*://*/*"],
-      "js": ["test.js"],
+      "js": ["script.js"],
       "run_at": "document_end"
     }
   ],
