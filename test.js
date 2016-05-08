@@ -5,71 +5,37 @@ var defaultLists = {
     'suggestList': ['police officer', 'sibling', 'actor', 'mx.']
 };
 //initialize defaultLists
-console.log(defaultLists);
 //counter for each list
 var inputCount = 0;
 var getDone = 0;
-loadDictAndSettings();
 
 //localStorage not working :(
 //using defaults for now
-chrome.storage.sync.set({'value': 'hello'}, function() {
-          // Notify that we saved.
-    console.log('Settings saved');
-});
+
+initialCheck();
 
 function initialCheck() {
-    var userLists = defaultLists; //{
-    	//'redList': [],
-    	//'suggestList': []
-    //}
+    var userList = {};
 
     chrome.storage.local.get(null, function(resultIf){
     	getDone = 0;
     	if (resultIf == null){
     		userLists = defaultLists;
         	chrome.storage.local.set({'redList': userLists['redList']}) 
-        	chrome.storage.local.set({'suggestList': userLists['suggestList']}) 	
-    	}
+        	chrome.storage.local.set({'suggestList': userLists['suggestList']})
+        	loadDictAndSettings(userLists);
+    	}//if
 
     	else {
-	  		chrome.storage.local.get('redList', function(resultR){
-	  			if(resultR){
-	  				console.log("wow");
-	  				userLists['redList'] = resultR['redList'];
-	  				console.log(userLists);
-	  				var rLength = userLists['redList'].length;
-	  				console.log(rLength);
-	  			}
-	  			else{
-	  				alert('Your Asterisk is corrupted. Loading defaults.');
-	  				userLists = defaultLists;
-        			chrome.storage.local.set({'redList': userLists['redList']}) 
-        			chrome.storage.local.set({'suggestList': userLists['suggestList']})
-	  			}
-	  		});
-	   		chrome.storage.local.get('suggestList', function(resultS){
-	   			if(resultS){
-	   				userLists['suggestList'] = resultS['suggestList'];
-	   			}
-
-	  			else{
-	  				alert('Your Asterisk is corrupted. Loading defaults.');
-	  				userLists = defaultLists;
-        			chrome.storage.local.set({'redList': userLists['redList']}) 
-        			chrome.storage.local.set({'suggestList': userLists['suggestList']})
-	  			}
- 	   		});
-    	}
-    	getDone = 1;
+    		userLists = resultIf;
+    		loadDictAndSettings(userLists);
+    	}//else
     });
-    console.log("End of Initial Check");
-    console.log(userLists);
-    return userLists;
+
+    console.log(getDone);
 }//parseLists
 
-function loadDictAndSettings(){
-	var userLists = initialCheck();
+function loadDictAndSettings(userLists){
 	var rLength = userLists['redList'].length;
 	var sLength = userLists['suggestList'].length;
 
